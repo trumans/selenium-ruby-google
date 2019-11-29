@@ -111,7 +111,7 @@ class GoogleSearchResults < Page
 	 		wait.until { old_url != get_current_url }
 
 		# ignore errors associated with slow connection and page loading
-	 	rescue Net::ReadTimeout, Selenium::WebDriver::Error::TimeOutError => e
+		rescue Net::ReadTimeout, Selenium::WebDriver::Error::TimeoutError => e
 	 		print " '#{e.message}' error ignored on link #{href} "
 	 	end
  	end
