@@ -135,6 +135,7 @@ class GoogleTest < Test::Unit::TestCase
       assert_expected_destination_url(cite_url, dest_url)
       puts "title: #{dest_page.get_title} "
 
+      sleep(0.75)
 		  dest_page.go_back
 		  results_page.wait_until_page_loads  # wait for results page
     }
@@ -236,28 +237,14 @@ class GoogleTest < Test::Unit::TestCase
     # domains to skip
     #   www.britannica.com - sometimes has ad window that overlays. 
     #   www.montereybayaquarium.org - redirects to itself, which requires back twice to return to search results
-    urls = [ 'www.britannica.com', 'www.montereybayaquarium.org' ]
+    #   www.livescience.com - causes intermittent timeouts.
+    urls = [
+      'www.britannica.com', 'www.montereybayaquarium.org', 'www.livescience.com'
+    ]
     for u in urls
       return true if url.include? u
     end
     return false
   end
 
-=begin
-
-   Next:
-  
-    Also Asked are unique
-
-    Establish safari and IE drivers
-  
-    Verify tabs at top of page: All, News, Videos, Images, etc
-  
-    Related Searches panel at bottom of page
-       - contain search terms
-       - are unique
-  
-    Pagination at bottom of page
-  
-=end
 end
