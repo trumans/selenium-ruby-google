@@ -45,7 +45,8 @@ class GoogleTest < Test::Unit::TestCase
 		  raise ArgumentError.new("Unexpected browser argument '#{$browser_arg}'") 
 		  exit 		
   	end
-	  @se = Selenium::WebDriver.for browser, :driver_path => driver_path
+    Selenium::WebDriver::Chrome::Service.driver_path = driver_path
+    @se = Selenium::WebDriver.for browser
   end
 
   def teardown
